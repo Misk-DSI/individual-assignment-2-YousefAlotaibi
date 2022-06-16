@@ -10,13 +10,13 @@ wineRed <- read_csv('data/winequality-red-kaggle.csv')
 
 head(wineRed)
 
-wineRed <- rename_with(wineRed, ~ tolower(gsub(" ", "_", .x, fixed = TRUE)))
+wineRed <- clean_names(wineRed)
 
 get_dupes(wineRed)
 # We can see that we have 230 duplicated observations.
 # Let's remove them! 
 
-wineRed[!duplicated(wineRed), ]
+wineRed <- wineRed[!duplicated(wineRed), ]
 # New tibble with only non-duplicate observations.
 
 is.null(wineRed)
@@ -57,6 +57,3 @@ featurePlot(x = wineRed[, 1:11],
             auto.key = list(columns = 2))
 # all of the variables affect wine quality excluding chlorides 
 # and residual_sugar as they have equal median for all qualities.
-
-cor(wineRed)
-typeof(wineRed)
