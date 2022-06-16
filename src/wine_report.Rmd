@@ -84,7 +84,7 @@ get_dupes(wineRed)
 # We can see that we have 230 duplicated observations.
 # Let's remove them! 
 
-wineRed[!duplicated(wineRed), ]
+wineRed <- wineRed[!duplicated(wineRed), ]
 # New tibble with only non-duplicate observations.
 
 is.null(wineRed)
